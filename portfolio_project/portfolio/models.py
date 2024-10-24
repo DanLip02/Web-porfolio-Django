@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 
 
@@ -8,17 +9,14 @@ class Project(models.Model):
     progress = models.PositiveIntegerField(default=0)  # Новое поле для процента выполнения
     link = models.URLField(max_length=200, blank=True)  # Ссылка на проект
 
-
     def __str__(self):
             return self.title
-
 
 class Experience(models.Model):
     EXPERIENCE_TYPES = [
         ('education', 'Обучение'),
         ('work', 'Место работы'),
     ]
-
     type = models.CharField(max_length=10, choices=EXPERIENCE_TYPES, default='education')  # Тип: обучение или работа
     institution = models.CharField(max_length=255)  # Учебное заведение или компания
     role = models.CharField(max_length=255)  # Специальность или должность
@@ -46,4 +44,12 @@ class Achievement(models.Model):
 
     def __str__(self):
         return self.description
+
+class UpdateLog(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    created_at = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return self.title
 # Create your models here.

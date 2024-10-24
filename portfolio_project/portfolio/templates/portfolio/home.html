@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная</title>
-    <link rel="stylesheet" href="/media/styles.css"> <!-- Подключение стилей, если есть -->
+    <link rel="stylesheet" href="/media/projects/styles_3.css"> <!-- Подключение стилей, если есть -->
 </head>
 <body>
     <header>
@@ -19,8 +19,20 @@
     </header>
 
     <main>
-        <h1>Добро пожаловать на мое портфолио</h1>
-        <p>Это моя личная страница, где я делюсь своими проектами и опытом.</p>
+        <h1 class="typing-text">Welcome to my web-portfolio!</h1>
+        <p>This is my own web-server where I share my projects, any helpful materials and my CV.</p>
+        <h2>Latest Updates</h2>
+        <div class="updates-section">
+            <ul>
+                {% for update in updates %}
+                <li>
+                    <h3> {{ update.title }}</h3>
+                    <p> {{ update.description }}</p>
+                    <small>Published on: {{ update.created_at }}</small>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </main>
 
     <footer>
