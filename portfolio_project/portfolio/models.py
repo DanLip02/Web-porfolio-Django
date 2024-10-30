@@ -1,7 +1,6 @@
 from django.utils import timezone
 from django.db import models
 
-
 class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -52,4 +51,20 @@ class UpdateLog(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ContactInfo(models.Model):
+    profile_photo = models.ImageField(upload_to='profile_photos/', blank=True, null=True)
+    short_description = models.TextField(blank=True)
+
+
+class SocialLink(models.Model):
+    platform_name = models.CharField(max_length=50)
+    icon = models.ImageField(upload_to='social_icons/')  # Иконка соцсети
+    url = models.URLField()
+    contact_info = models.ForeignKey(ContactInfo, related_name='social_links', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.platform_name
+
 # Create your models here.

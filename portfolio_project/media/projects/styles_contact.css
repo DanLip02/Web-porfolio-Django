@@ -1,0 +1,47 @@
+/* Контейнер для секции контактов */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f4f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Стили для фото профиля */
+.profile-photo img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #74ebd5;
+}
+
+/* Стили для описания профиля */
+.description p {
+    text-align: center;
+    color: #333;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Стили для иконок соцсетей */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-link img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+/* Анимация при наведении на иконки */
+.social-link:hover img {
+    transform: scale(1.2);
+}

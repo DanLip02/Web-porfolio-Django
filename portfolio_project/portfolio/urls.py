@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns = [path('', views.home, name='home'),
                path('projects/', views.project_list, name='project_list'),
-               path('about/', views.about, name='about')] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+               path('about/', views.about, name='about'),
+               path('contacts/', views.contacts, name='contacts')] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
