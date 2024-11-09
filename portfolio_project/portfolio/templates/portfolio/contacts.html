@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
-    <link rel="stylesheet" href="/media/projects/styles_contacts.css"> <!-- Подключение стилей, если есть -->
+    <link rel="stylesheet" href="/media/projects/style_contact.css"> <!-- Подключение стилей, если есть -->
 </head>
 <body>
     <header>
@@ -21,7 +21,7 @@
             {% if contact_info.profile_photo %}
                 <img src="{{ contact_info.profile_photo.url }}" alt="Profile Photo">
             {% else %}
-<!--                <img src="{% static 'images/default-profile.png' %}" alt="Default Profile Photo">-->
+                <p> No photo </p>
             {% endif %}
         </div>
 

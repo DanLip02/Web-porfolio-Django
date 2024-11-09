@@ -57,6 +57,8 @@ class ContactInfo(models.Model):
     profile_photo = models.ImageField(upload_to='profile_photos/', blank=True, null=True)
     short_description = models.TextField(blank=True)
 
+    def __str__(self):
+        return self.short_description
 
 class SocialLink(models.Model):
     platform_name = models.CharField(max_length=50)
