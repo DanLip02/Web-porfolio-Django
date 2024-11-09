@@ -1,4 +1,3 @@
-/* Основные стили для body */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,16 +6,11 @@ body {
     color: #333;
 }
 
-/* Стили для заголовков */
+
 h1 {
     text-align: center;
     margin-top: 30px;
     font-size: 36px;
-}
-
-h2, h3 {
-    font-family: 'Roboto', sans-serif;
-    color: #333;
 }
 
 /* Стили для навигационного меню */
@@ -47,73 +41,9 @@ nav ul li a:hover {
 /* Основные стили для разделов */
 section {
     padding: 20px;
+    width: 80%; /* Контент в разделе будет занимать 80% ширины экрана */
+    margin: 100px auto 0 auto; /* Отступ сверху, чтобы не перекрывать меню */
 }
-
-/* Сетка для отображения проектов */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Сетка с авто-дополнением колонок */
-    gap: 20px; /* Отступы между контейнерами */
-    padding: 20px; /* Внешний отступ */
-}
-
-/* Карточка для каждого проекта */
-.project-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px 0;
-    padding: 10px;
-    transition: transform 0.3s ease;
-    overflow: hidden;
-    position: relative;
-    text-align: center;
-    height: 400px;
-    width: 300px;
-}
-
-.project-card:hover {
-    transform: scale(1.02);
-}
-
-/* Заголовок проекта */
-.project-card h2 {
-    margin-top: 0;
-}
-
-/* Добавление изображения в проект */
-.project-card img {
-    width: 100%; /* Изображение заполняет контейнер по ширине */
-    height: 200px; /* Фиксированная высота изображения */
-    object-fit: cover; /* Изображение заполняет контейнер, сохраняя пропорции и обрезается */
-    border-bottom: 1px solid #ddd;
-    border-radius: 8px 8px 0 0;
-    display: block; /* Для стабильного отображения */
-}
-
-/* Контейнер для описания проекта */
-.project-description {
-    padding: 10px 0;
-}
-
-/* Прогресс выполнения */
-.progress-bar {
-    background-color: #f3f3f3;
-    border-radius: 4px;
-    position: relative;
-    height: 20px;
-    width: 100%;
-    margin: 10px 0;
-}
-
-.progress-bar-fill {
-    height: 100%;
-    background-color: #4CAF50;
-    border-radius: 4px;
-    transition: width 0.4s ease-in-out;
-}
-
 /* Стили для кнопки "Посмотреть Source Code" */
 .button-source {
     background-color: #008CBA; /* Цвет кнопки */
@@ -170,49 +100,10 @@ footer {
     50% { border-color: #333; }
 }
 
-.updates-section {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px 0;
-}
-
-.updates-section ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.updates-section {
-    padding: 15px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.updates-section:hover p {
-    transform: scale(1.01);
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #74ebd5;
-    cursor: pointer;
-}
-
-.updates-section li h3 {
-    margin: 0;
-}
-
-.updates-section li p {
-    margin: 10px 0 5px;
-}
-
-.updates-section small {
-    color: #777;
-}
-
 /* Новый блок для фото в левом углу с округленными углами */
 .profile-photo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 250px; /* Размер зоны с фото */
-    height: 250px; /* Размер зоны с фото */
+    width: 150px; /* Размер зоны с фото */
+    height: 150px; /* Размер зоны с фото */
     border-radius: 15px; /* Округление углов */
     overflow: hidden; /* Чтобы фото не выходило за пределы */
     border: 2px solid #ccc; /* Рамка вокруг блока */
@@ -220,6 +111,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px; /* Отступ сверху */
+    flex-shrink: 0; /* Блок не будет сжиматься */
 }
 
 /* Стили для изображения внутри блока */
@@ -228,6 +121,35 @@ footer {
     height: 100%;
     object-fit: cover; /* Изображение будет заполнять контейнер, сохраняя пропорции и обрезаясь */
 }
+
+.social-links {
+
+    display: flex;
+    flex-direction: row; /* Ссылки располагаются вертикально */
+    align-items: flex-start;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center; /* Центрируем иконки и текст по вертикали */
+    text-decoration: none;
+    color: #333;
+    margin: 10px 0;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #0073e6; /* Цвет при наведении */
+}
+
+.social-links img {
+    margin-right: 100px; /* Отступ между иконкой и текстом */
+    font-size: 20px; /* Размер иконки */
+    width: 50px; /* Размер зоны с фото */
+    height: 50px; /* Размер зоны с фото */
+}
+
 
 /* Адаптивность: изменяем размеры фото при изменении размера экрана */
 @media (max-width: 768px) {

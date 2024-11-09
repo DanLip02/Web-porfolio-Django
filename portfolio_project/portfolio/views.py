@@ -15,8 +15,8 @@ def about(request):
     return render(request, 'portfolio/about.html', {'experiences': experiences})
 
 def contacts(request):
-    contact = ContactInfo.objects.all()
-    media = SocialLink.objects.all()
+    contact_info = ContactInfo.objects.first()
+    social_link = SocialLink.objects.all()
     # print(experiences)
-    return render(request, 'portfolio/contacts.html', {'contact': contact, 'media': media})
+    return render(request, 'portfolio/contacts.html', {'contact_info': contact_info})
 # Create your views here.
