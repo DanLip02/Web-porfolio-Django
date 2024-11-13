@@ -1,0 +1,195 @@
+/* Основные стили для body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Стили для заголовков */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 36px;
+}
+
+h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+/* Стили для навигационного меню */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    overflow: hidden;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #111;
+}
+
+/* Основные стили для разделов */
+section {
+    padding: 20px;
+}
+
+/* Контейнер для слайдера с горизонтальным скроллом */
+.slider-container {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap; /* Отключает перенос строк */
+}
+
+/* Сетка для отображения проектов с горизонтальным скроллом */
+.projects-grid {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    width: max-content; /* Устанавливаем ширину по содержимому для горизонтального скролла */
+    box-sizing: border-box;
+}
+
+/* Настройка карточек проектов */
+.project-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Фиксированная ширина для каждой карточки */
+    flex-shrink: 0; /* Предотвращаем изменение ширины карточки */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+/* Изображение заполняет контейнер по ширине */
+.project-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Кнопка "Посмотреть Source Code" */
+.button-source {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block; /* Кнопка занимает всю ширину */
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: auto; /* Кнопка закреплена снизу карточки */
+    transition: background-color 0.3s ease;
+}
+
+.button-source:hover {
+    background-color: #005f73;
+}
+
+/* Кнопки для слайдера */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.slider-button-left {
+    left: 10px;
+}
+
+.slider-button-right {
+    right: 10px;
+}
+
+.slider-button:hover {
+    background-color: #45a049;
+}
+
+/* Прогресс выполнения */
+.progress-bar {
+    background-color: #f3f3f3;
+    border-radius: 4px;
+    position: relative;
+    height: 20px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 4px;
+    transition: width 0.4s ease-in-out;
+}
+
+a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: bottom;
+    bottom: 0;
+    width: 100%;
+}
+
+.typing-text {
+    border-right: 2px solid #333;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 4s steps(40, end), blink 0.5s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: #333; }
+}
