@@ -59,7 +59,7 @@ section {
 /* Сетка для отображения проектов */
 .projects-grid {
     display: flex; /* Используем flex для прокрутки содержимого по горизонтали */
-    width: 100%; /* Ширина слайдера */
+    width: 50%; /* Ширина слайдера */
     overflow-x: scroll; /* Горизонтальная прокрутка */
     scroll-behavior: smooth; /* Плавная прокрутка */
     gap: 20px;
@@ -71,7 +71,7 @@ section {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 300px; /* Фиксированная ширина для каждой карточки */
+    width: 100px; /* Фиксированная ширина для каждой карточки */
     flex-shrink: 0; /* Предотвращаем изменение ширины карточки */
     padding: 10px;
     transition: transform 0.3s ease;
@@ -79,7 +79,7 @@ section {
 }
 
 .project-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
 }
 
 /* Добавление изображения в проект */
