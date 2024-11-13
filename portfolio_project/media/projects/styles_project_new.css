@@ -49,23 +49,23 @@ section {
     padding: 20px;
 }
 
-/* Контейнер для слайдера с горизонтальным скроллом */
+/* Контейнер для слайдера */
 .slider-container {
     width: 100%;
-    overflow-x: auto;
-    white-space: nowrap; /* Отключает перенос строк */
+    overflow: hidden; /* Скрываем все, что выходит за пределы контейнера */
+    position: relative;
 }
 
-/* Сетка для отображения проектов с горизонтальным скроллом */
+/* Сетка для отображения проектов */
 .projects-grid {
-    display: flex;
+    display: flex; /* Используем flex для прокрутки содержимого по горизонтали */
+    width: 100%; /* Ширина слайдера */
+    overflow-x: scroll; /* Горизонтальная прокрутка */
+    scroll-behavior: smooth; /* Плавная прокрутка */
     gap: 20px;
     padding: 20px;
-    width: max-content; /* Устанавливаем ширину по содержимому для горизонтального скролла */
-    box-sizing: border-box;
 }
 
-/* Настройка карточек проектов */
 .project-card {
     background-color: white;
     border: 1px solid #ddd;
@@ -74,9 +74,6 @@ section {
     width: 300px; /* Фиксированная ширина для каждой карточки */
     flex-shrink: 0; /* Предотвращаем изменение ширины карточки */
     padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     transition: transform 0.3s ease;
     text-align: center;
 }
@@ -85,32 +82,13 @@ section {
     transform: scale(1.05);
 }
 
-/* Изображение заполняет контейнер по ширине */
+/* Добавление изображения в проект */
 .project-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+    width: 100%; /* Изображение заполняет контейнер по ширине */
+    height: 200px; /* Фиксированная высота изображения */
+    object-fit: cover; /* Изображение заполняет контейнер, сохраняя пропорции и обрезается */
     border-bottom: 1px solid #ddd;
-}
-
-/* Кнопка "Посмотреть Source Code" */
-.button-source {
-    background-color: #008CBA;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: block; /* Кнопка занимает всю ширину */
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: auto; /* Кнопка закреплена снизу карточки */
-    transition: background-color 0.3s ease;
-}
-
-.button-source:hover {
-    background-color: #005f73;
+    border-radius: 8px 8px 0 0;
 }
 
 /* Кнопки для слайдера */
@@ -140,7 +118,6 @@ section {
     background-color: #45a049;
 }
 
-/* Прогресс выполнения */
 .progress-bar {
     background-color: #f3f3f3;
     border-radius: 4px;
@@ -155,6 +132,23 @@ section {
     background-color: #4CAF50;
     border-radius: 4px;
     transition: width 0.4s ease-in-out;
+}
+/* Стили для кнопки "Посмотреть Source Code" */
+.button-source {
+    background-color: #008CBA; /* Цвет кнопки */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /*margin: 4px 2px; */
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
 }
 
 a {
@@ -174,22 +168,4 @@ footer {
     position: bottom;
     bottom: 0;
     width: 100%;
-}
-
-.typing-text {
-    border-right: 2px solid #333;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-    animation: typing 4s steps(40, end), blink 0.5s step-end infinite;
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink {
-    from, to { border-color: transparent; }
-    50% { border-color: #333; }
 }
