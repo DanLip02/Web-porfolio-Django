@@ -49,66 +49,75 @@ section {
     padding: 20px;
 }
 
+/* Контейнер для слайдера */
+.slider-container {
+    width: 100%;
+    overflow: hidden; /* Скрываем все, что выходит за пределы контейнера */
+    position: relative;
+}
+
 /* Сетка для отображения проектов */
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Сетка с авто-дополнением колонок */
-    gap: 20px; /* Отступы между контейнерами */
-    padding: 20px; /* Внешний отступ */
+    display: flex; /* Используем flex для прокрутки содержимого по горизонтали */
+    width: 100%; /* Ширина слайдера */
+    overflow-x: scroll; /* Горизонтальная прокрутка */
+    scroll-behavior: smooth; /* Плавная прокрутка */
+    gap: 20px;
+    padding: 20px;
 }
 
-.project-card:hover {
-    transform: scale(1.02);
-}
-
-/* Заголовок проекта */
-.project-card h2 {
-    margin-top: 0;
-}
-
-/* Добавление изображения в проект */
-
-/* Карточка для каждого проекта */
 .project-card {
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px 0;
+    width: 300px; /* Фиксированная ширина для каждой карточки */
+    flex-shrink: 0; /* Предотвращаем изменение ширины карточки */
     padding: 10px;
     transition: transform 0.3s ease;
-    overflow: hidden;
-    position: relative;
     text-align: center;
-
 }
 
 .project-card:hover {
-    transform: scale(1.02);
-}
-
-/* Заголовок проекта */
-.project-card h2 {
-    margin-top: 0;
+    transform: scale(1.05);
 }
 
 /* Добавление изображения в проект */
 .project-card img {
     width: 100%; /* Изображение заполняет контейнер по ширине */
-    height: 50px; /* Высота изображения (можно настроить) */
+    height: 200px; /* Фиксированная высота изображения */
     object-fit: cover; /* Изображение заполняет контейнер, сохраняя пропорции и обрезается */
-    border-bottom: 1px solid #ddd; /* Отделение изображения от содержимого */
-    border-radius: 8px 8px 0 0; /* Скругление углов в верхней части */
-    display: block; /* Для стабильного отображения */
+    border-bottom: 1px solid #ddd;
+    border-radius: 8px 8px 0 0;
 }
 
-
-/* Контейнер для описания проекта */
-.project-description {
-    padding: 10px 0;
+/* Кнопки для слайдера */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 10;
+    transition: background-color 0.3s ease;
 }
 
-/* Прогресс выполнения */
+.slider-button-left {
+    left: 10px;
+}
+
+.slider-button-right {
+    right: 10px;
+}
+
+.slider-button:hover {
+    background-color: #45a049;
+}
+
 .progress-bar {
     background-color: #f3f3f3;
     border-radius: 4px;
@@ -124,10 +133,9 @@ section {
     border-radius: 4px;
     transition: width 0.4s ease-in-out;
 }
-
 /* Стили для кнопки "Посмотреть Source Code" */
 .button-source {
-    background-color: #008CBA; /* Цвет кнопки */
+    background-color: #007CBA; /* Цвет кнопки */
     border: none;
     color: white;
     padding: 10px 20px;
@@ -141,6 +149,8 @@ section {
     transition: background-color 0.3s ease;
 }
 
+}
+
 a {
     color: #1e90ff;
     text-decoration: none;
@@ -148,9 +158,6 @@ a {
 
 a:hover {
     text-decoration: underline;
-}
-.button-source:hover {
-    background-color: #005f73; /* Цвет при наведении */
 }
 
 footer {
@@ -162,6 +169,8 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+
 
 .typing-text {
     border-right: 2px solid #333; /* Эффект курсора */
@@ -179,37 +188,4 @@ footer {
 @keyframes blink {
     from, to { border-color: transparent; }
     50% { border-color: #333; }
-}
-
-/* Основные стили для слайдера */
-.swiper-container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.source-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.source-button:hover {
-    background-color: #45a049;
-}
-
-/* Пагинация Swiper */
-.swiper-pagination {
-    position: relative;
-    margin-top: 10px;
 }

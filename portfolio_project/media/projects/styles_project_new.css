@@ -135,7 +135,7 @@ section {
 }
 /* Стили для кнопки "Посмотреть Source Code" */
 .button-source {
-    background-color: #008CBA; /* Цвет кнопки */
+    background-color: #010CBA; /* Цвет кнопки */
     border: none;
     color: white;
     padding: 10px 20px;
@@ -168,4 +168,24 @@ footer {
     position: bottom;
     bottom: 0;
     width: 100%;
+}
+
+
+
+.typing-text {
+    border-right: 2px solid #333; /* Эффект курсора */
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 4s steps(40, end), blink 0.5s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: #333; }
 }

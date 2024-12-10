@@ -44,24 +44,6 @@ section {
     width: 80%; /* Контент в разделе будет занимать 80% ширины экрана */
     margin: 100px auto 0 auto; /* Отступ сверху, чтобы не перекрывать меню */
 }
-/* Стили для кнопки "Посмотреть Source Code" */
-.button-source {
-    background-color: #008CBA; /* Цвет кнопки */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.button-source:hover {
-    background-color: #005f73; /* Цвет при наведении */
-}
 
 a {
     color: #1e90ff;
@@ -150,6 +132,10 @@ footer {
     height: 50px; /* Размер зоны с фото */
 }
 
+/* Анимация при наведении на иконки */
+.social-link:hover img {
+    transform: scale(1.2);
+}
 
 /* Адаптивность: изменяем размеры фото при изменении размера экрана */
 @media (max-width: 768px) {
