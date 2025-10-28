@@ -1,9 +1,18 @@
 from django.shortcuts import render
 from .models import Project, Experience, UpdateLog, ContactInfo, SocialLink
 
-def project_list(request):
+# def project_list(request):
+#     projects = Project.objects.all()
+#     return render(request, 'portfolio/project_list.html', {'projects': projects})
+
+def project_tree(request):
     projects = Project.objects.all()
-    return render(request, 'portfolio/project_list.html', {'projects': projects})
+    categories = {
+        "work": projects.filter(category="work"),
+        "university": projects.filter(category="university"),
+        "personal": projects.filter(category="personal"),
+    }
+    return render(request, "portfolio/projects_tree.html", {"categories": categories, "projects": projects})
 
 def home(request):
     updates = UpdateLog.objects.order_by('-created_at')[:5]

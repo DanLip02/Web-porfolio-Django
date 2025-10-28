@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects Tree</title>
+    <link rel="stylesheet" href="/media/projects/styles_project_tree.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Main</a></li>
+            <li><a href="/about">CV / About</a></li>
+            <li><a href="/contacts">Contacts</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+<section>
+    <h1 class="typing-text">My Projects</h1>
+    <div class="tree">
+        {% for category, projects_list in categories.items %}
+        <ul>
+            <li>
+                <span class="category">{{ category }}</span>
+                <ul>
+                    {% for project in projects_list %}
+                    <li class="project-node">
+                        <span class="project-title">{{ project.title }}</span>
+                        <div class="project-popup">
+                            <p>{{ project.description }}</p>
+                            <p>Progress: {{ project.progress }}%</p>
+                            {% if project.link %}
+                            <a href="{{ project.link }}" target="_blank" class="button-source">Source Code</a>
+                            {% else %}
+                            <p>Source code is not available</p>
+                            {% endif %}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+</section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Lipatov Danila's Portfolio. All rights reserved.</p>
+</footer>
+
+<script src="/media/projects/projects_tree.js"></script>
+</body>
+</html>

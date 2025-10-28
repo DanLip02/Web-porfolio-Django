@@ -2,14 +2,21 @@ from django.utils import timezone
 from django.db import models
 
 class Project(models.Model):
-    title = models.CharField(max_length=100)
+    CATEGORY_CHOICES = [
+        ("work", "Рабочие"),
+        ("university", "Вузовские"),
+        ("personal", "Личные/пэт"),
+    ]
+
+    title = models.CharField(max_length=200)
     description = models.TextField()
-    image = models.ImageField(upload_to='projects/', null=True)  # Изображение
-    progress = models.PositiveIntegerField(default=0)  # Новое поле для процента выполнения
-    link = models.URLField(max_length=200, blank=True)  # Ссылка на проект
+    # image = models.ImageField(upload_to='projects/', null=True, blank=True)
+    progress = models.PositiveIntegerField(default=0)
+    link = models.URLField(max_length=200, blank=True)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES,  default='personal')
 
     def __str__(self):
-            return self.title
+        return f"{self.title} ({self.category})"
 
 class Experience(models.Model):
     EXPERIENCE_TYPES = [
@@ -62,7 +69,7 @@ class ContactInfo(models.Model):
 
 class SocialLink(models.Model):
     platform_name = models.CharField(max_length=50)
-    icon = models.ImageField(upload_to='social_icons/')  # Иконка соцсети
+    icon = models.ImageField(upload_to='social_icons/')
     url = models.URLField()
     contact_info = models.ForeignKey(ContactInfo, related_name='social_links', on_delete=models.CASCADE)
 
