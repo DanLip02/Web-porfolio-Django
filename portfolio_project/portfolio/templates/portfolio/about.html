@@ -8,49 +8,52 @@
 </head>
 <body>
     <!-- navigation menu -->
-    <nav>
-        <ul>
-            <li><a href="/">Main</a></li>
-            <li><a href="/contacts/">Contacts</a></li>
-            <li><a href="/projects/">My projects</a></li>
-        </ul>
-    </nav>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Main</a></li>
+                <li><a href="/contacts/">Contacts</a></li>
+                <li><a href="/projects/">My projects</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1 class="typing-text">CV / About my experience</h1>
+            <div class="experience-section">
+                {% if experiences %}
+                    {% for experience in experiences %}
+                        <div class="experience-card">
+                            <h2 class="experience-title">{{ experience.institution }} - {{ experience.role }}</h2>
+                            <p class="experience-dates">{{ experience.start_date }} - {% if experience.end_date %}{{ experience.end_date }}{% else %}по настоящее время{% endif %}</p>
+                            <p class="experience-description">{{ experience.description }}</p>
+                            {% if experience.technologies %}
+                                <h4>Used Technologies:</h4>
+                                <ul class="tech-list">
+                                    {% for tech in experience.technologies.all %}
+                                        <li>{{ tech.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
 
-    <h1 class="typing-text">CV / About my experience</h1>
-    <div class="experience-section">
-        {% if experiences %}
-            {% for experience in experiences %}
-                <div class="experience-card">
-                    <h2 class="experience-title">{{ experience.institution }} - {{ experience.role }}</h2>
-                    <p class="experience-dates">{{ experience.start_date }} - {% if experience.end_date %}{{ experience.end_date }}{% else %}по настоящее время{% endif %}</p>
-                    <p class="experience-description">{{ experience.description }}</p>
-                    {% if experience.technologies %}
-                        <h4>Used Technologies:</h4>
-                        <ul class="tech-list">
-                            {% for tech in experience.technologies.all %}
-                                <li>{{ tech.name }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-
-                    {% if experience.achievements %}
-                        <h4>Achievements:</h4>
-                        <ul class="achievement-list">
-                            {% for achievement in experience.achievements.all %}
-                                <li>{{ achievement.description }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div> <!-- close tag for each card experience-card -->
-            {% endfor %}
-        {% else %}
-            <p>No data found</p>
-        {% endif %}
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Lipatov Danila's Portfolio. All rights reserved.</p>
-    </footer>
+                            {% if experience.achievements %}
+                                <h4>Achievements:</h4>
+                                <ul class="achievement-list">
+                                    {% for achievement in experience.achievements.all %}
+                                        <li>{{ achievement.description }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div> <!-- close tag for each card experience-card -->
+                    {% endfor %}
+                {% else %}
+                    <p>No data found</p>
+                {% endif %}
+            </div>
+        </section>
+    <main>
+<footer>
+    <p>&copy; 2025 Lipatov Danila's Portfolio. All rights reserved.</p>
+</footer>
 </body>
 </html>

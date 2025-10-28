@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная</title>
-    <link rel="stylesheet" href="/media/projects/styles_3.css"> <!-- Подключение стилей, если есть -->
+    <link rel="stylesheet" href="/media/projects/styles_home.css"> <!-- Подключение стилей, если есть -->
 </head>
 <body>
     <header>
@@ -18,24 +18,40 @@
     </header>
 
     <main>
-        <h1 class="typing-text">Welcome to my web-portfolio!</h1>
-        <p>This is my own web-server where I share my projects, any helpful materials and my CV.</p>
-        <h2>Latest Updates</h2>
-        <div class="updates-section">
-            <ul>
-                {% for update in updates %}
-                <li>
-                    <h3> {{ update.title }}</h3>
-                    <p> {{ update.description }}</p>
-                    <small>Published on: {{ update.created_at }}</small>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
+        <section class="projects-section">
+            <h1 class="typing-text">Welcome to my web-portfolio!</h1>
+            <p>This is my own web-server where I share my projects, any helpful materials and my CV.</p>
+            <h2>Latest Updates</h2>
+            <div class="updates-section">
+                <ul>
+                    {% for update in updates %}
+                    <li>
+                        <h3> {{ update.title }}</h3>
+                        <p> {{ update.description }}</p>
+                        <small>Published on: {{ update.created_at }}</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Lipatov Danila's Portfolio. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>&copy; 2025 Lipatov Danila's Portfolio. All rights reserved.</p>
+</footer>
+
+<script>
+    // JS для показа popup при клике на карточку проекта
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const popup = card.querySelector('.project-popup');
+            if (popup.style.display === 'block') {
+                popup.style.display = 'none';
+            } else {
+                popup.style.display = 'block';
+            }
+        });
+    });
+</script>
 </body>
 </html>
