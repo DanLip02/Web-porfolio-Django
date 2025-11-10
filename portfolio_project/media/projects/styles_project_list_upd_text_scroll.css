@@ -1,0 +1,220 @@
+/* Основные стили для body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Стили для заголовков */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 36px;
+}
+
+h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+/* Стили для навигационного меню */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    overflow: hidden;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #111;
+}
+
+/* Основные стили для разделов */
+section {
+    padding: 20px;
+}
+
+/* Контейнер для слайдера */
+.slider-container {
+    width: 100%;
+    overflow: hidden; /* Скрываем все, что выходит за пределы контейнера */
+    position: relative;
+}
+
+/* Сетка для отображения проектов */
+.projects-grid {
+    display: flex; /* Используем flex для прокрутки содержимого по горизонтали */
+    width: 100%; /* Ширина слайдера */
+    overflow-x: scroll; /* Горизонтальная прокрутка */
+    scroll-behavior: smooth; /* Плавная прокрутка */
+    gap: 20px;
+    padding: 20px;
+}
+
+.project-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 280px; /* Минимальная ширина для читабельности */
+    max-width: 350px; /* Максимальная ширина для стабильного отображения */
+    padding: 10px;
+    transition: transform 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+/* Добавление изображения в проект */
+.project-card img {
+    width: 100%;
+    height: auto;
+    max-height: 200px; /* Ограничение высоты изображения */
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Контейнер для описания проекта */
+.project-description {
+    flex-grow: 1;
+    max-height: 140px; /* Ограничение высоты текста */
+    overflow-y: auto; /* Добавление вертикальной прокрутки */
+    text-align: left;
+    margin-top: 10px;
+    padding: 5px;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.4;
+    border-top: 1px solid #ddd;
+}
+
+/* Стили для прокрутки */
+.project-description::-webkit-scrollbar {
+    width: 8px;
+}
+
+.project-description::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+}
+
+.project-description::-webkit-scrollbar-track {
+    background-color: #f3f3f3;
+}
+
+/* Кнопки для слайдера */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.slider-button-left {
+    left: 10px;
+}
+
+.slider-button-right {
+    right: 10px;
+}
+
+.slider-button:hover {
+    background-color: #45a049;
+}
+
+.progress-bar {
+    background-color: #f3f3f3;
+    border-radius: 4px;
+    position: relative;
+    height: 20px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 4px;
+    transition: width 0.4s ease-in-out;
+}
+
+/* Стили для кнопки "Посмотреть Source Code" */
+.button-source {
+    background-color: #007CBA; /* Цвет кнопки */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /*margin: 4px 2px; */
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: bottom;
+    bottom: 0;
+    width: 100%;
+}
+
+.typing-text {
+    border-right: 2px solid #333; /* Эффект курсора */
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 4s steps(40, end), blink 0.5s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: #333; }
+}

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
+<<<<<<< HEAD
     <option name="sdkName" value="Python 3.12 (Web-porfolio-Django)" />
+=======
+    <option name="sdkName" value="Python 3.10 (Web-porfolio-Django)" />
+>>>>>>> 70380a332c00f491fe7b06f9583019d25e53e9d2
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (Web-porfolio-Django)" project-jdk-type="Python SDK" />
 </project>

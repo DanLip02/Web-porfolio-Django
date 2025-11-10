@@ -5,14 +5,14 @@ from django.utils.html import format_html
 # Register your models here.
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'progress')  # Отображение названия проекта и процента выполнения в списке проектов
-    fields = ('title', 'description', 'image', 'progress', 'link')  # Поля для редактирования
+    list_display = ('title', 'progress')  # project's name +
+    fields = ('title', 'description', 'image', 'progress', 'link')  # redacted fields
 
 admin.site.register(Project)
 
 class TechnologyInline(admin.TabularInline):
     model = Technology
-    extra = 1  # Сколько пустых форм показывать
+    extra = 1  # How much free from to be shown
 
 admin.site.register(Technology)
 

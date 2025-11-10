@@ -1,8 +1,13 @@
-/* Основные стили для body */
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
     min-height: 100vh; /* Минимальная высота = весь экран */
@@ -15,29 +20,20 @@ main {
     padding: 20px;
 }
 
-/* Стили для заголовков */
-h1 {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 36px;
+header {
+    background-color: #333;
+    color: white;
 }
 
-h2, h3 {
-    font-family: 'Roboto', sans-serif;
-    color: #333;
-}
-
-/* Стили для навигационного меню */
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: #333;
-    overflow: hidden;
+    display: flex;
 }
 
 nav ul li {
-    float: left;
+    margin: 0;
 }
 
 nav ul li a {
@@ -52,33 +48,16 @@ nav ul li a:hover {
     background-color: #111;
 }
 
-/* Основные стили для разделов */
-section {
+main {
+    flex: 1; /* Растягивается между header и footer */
     padding: 20px;
 }
 
-/* Сетка для отображения проектов */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Сетка с авто-дополнением колонок */
-    gap: 20px; /* Отступы между контейнерами */
-    padding: 20px; /* Внешний отступ */
-}
-
-/* Карточка для каждого проекта */
-.project-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px 0;
-    padding: 10px;
-    transition: transform 0.3s ease;
-    overflow: hidden;
-    position: relative;
+/* Заголовки */
+h1 {
     text-align: center;
-    height: 400px;
-    width: 300px;
+    margin-top: 30px;
+    font-size: 36px;
 }
 
 .project-card:hover {
@@ -158,10 +137,15 @@ footer {
     position: relative; /* Меняем на relative для нормального потока */
     width: 100%;
     margin-top: auto; /* Это важно для прижатия к низу */
+
+h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
 }
 
+/* Эффект печатающегося текста */
 .typing-text {
-    border-right: 2px solid #333; /* Эффект курсора */
+    border-right: 2px solid #333;
     white-space: nowrap;
     overflow: hidden;
     width: 0;
@@ -178,6 +162,7 @@ footer {
     50% { border-color: #333; }
 }
 
+/* === Latest Updates === */
 .updates-section {
     background-color: #f9f9f9;
     padding: 20px;
@@ -190,16 +175,8 @@ footer {
     padding: 0;
 }
 
-.updates-section {
-    padding: 15px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.updates-section:hover p {
-    transform: scale(1.01);
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #74ebd5;
-    cursor: pointer;
+.updates-section li {
+    margin-bottom: 15px;
 }
 
 .updates-section li h3 {
@@ -207,47 +184,126 @@ footer {
 }
 
 .updates-section li p {
-    margin: 10px 0 5px;
+    margin: 5px 0;
 }
 
 .updates-section small {
     color: #777;
 }
 
-/* Новый блок для фото в левом углу с округленными углами */
-.profile-photo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 250px; /* Размер зоны с фото */
-    height: 250px; /* Размер зоны с фото */
-    border-radius: 15px; /* Округление углов */
-    overflow: hidden; /* Чтобы фото не выходило за пределы */
-    border: 2px solid #ccc; /* Рамка вокруг блока */
-    background-color: #f4f4f9; /* Фон блока */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* === Projects Section === */
+.projects-section {
+    margin-top: 40px;
 }
 
-/* Стили для изображения внутри блока */
-.profile-photo img {
+/* Сетка проектов */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* Карточка проекта */
+.project-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 10px;
+    transition: transform 0.3s ease;
+    text-align: center;
+    position: relative;
+}
+
+.project-card:hover {
+    transform: scale(1.02);
+}
+
+/* Изображение проекта */
+.project-card img {
     width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Описание проекта */
+.project-description {
+    padding: 10px 0;
+}
+
+/* Прогресс выполнения */
+.progress-bar {
+    background-color: #f3f3f3;
+    border-radius: 4px;
+    height: 20px;
+    width: 100%;
+    margin: 10px 0;
+    position: relative;
+}
+
+.progress-bar-fill {
     height: 100%;
-    object-fit: cover; /* Изображение будет заполнять контейнер, сохраняя пропорции и обрезаясь */
+    background-color: #4CAF50;
+    border-radius: 4px;
+    transition: width 0.4s ease-in-out;
 }
 
-/* Адаптивность: изменяем размеры фото при изменении размера экрана */
-@media (max-width: 768px) {
-    .profile-photo {
-        width: 200px; /* Меньше по ширине на мобильных устройствах */
-        height: 200px; /* Меньше по высоте на мобильных устройствах */
-    }
+/* Кнопка Source Code */
+.button-source {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
-@media (max-width: 480px) {
-    .profile-photo {
-        width: 150px; /* Ещё меньше на самых маленьких экранах */
-        height: 150px;
-    }
+.button-source:hover {
+    background-color: #005f73;
+}
+
+a {
+    color: #1e90ff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* === Footer === */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto; /* Прижимает футер к низу */
+}
+
+/* === Project popup === */
+.project-popup {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    background-color: #fff;
+    border: 1px solid #4CAF50;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+    text-align: left;
+    font-size: 14px;
+}
+
+.project-card:hover .project-popup {
+    display: block;
 }
