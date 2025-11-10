@@ -7,85 +7,93 @@
     <title>My projects</title>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/media/projects/styles_project_list.css"> <!-- Подключение стилей, если есть -->
+    <link rel="stylesheet" href="/media/projects/background.css">
+    <!--    <link src="{ % static '/media/styles.css">-->
     <link rel="stylesheet" href="/media/projects/styles_project_list_upd_text_scroll.css"> <!-- Подключение стилей, если есть -->
 <!--    <link src="{ % static '/media/styles.css">-->
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Main</a></li>
-                <li><a href="/about">CV / About my experience</a></li>
-                <li><a href="/contacts">Contacts</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="background" id="animatedBackground">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Main</a></li>
+                    <li><a href="/about">CV / About my experience</a></li>
+                    <li><a href="/contacts">Contacts</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <main>
-        <section>
-        <h1 class="typing-text">My projects</h1>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="projects-grid">
-                    {% for project in projects %}
-                    <div class="project-card">
-                        <img src="{{ project.image.url }}" alt="Изображение проекта">
-                        <h2>{{ project.title }}</h2>
-                        <div class="project-description">
-                            <p>{{ project.description }}</p>
+        <main>
+            <section>
+                <h1 class="typing-text">My projects</h1>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="projects-grid">
+                            {% for project in projects %}
+                            <div class="project-card">
+                                <img src="{{ project.image.url }}" alt="Изображение проекта">
+                                <h2>{{ project.title }}</h2>
+                                <div class="project-description">
+                                    <p>{{ project.description }}</p>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-bar-fill" style="width: {{ project.progress }}%;"></div>
+                                </div>
+                                <p>The project was completed on {{ project.progress }}%</p>
+                                {% if project.link %}
+                                <a href="{{ project.link }}" target="_blank" class="button-source">Source Code</a>
+                                {% else %}
+                                <p>Source code is not available</p>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
                         </div>
-                        <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: {{ project.progress }}%;"></div>
-                        </div>
-                        <p>The project was completed on {{ project.progress }}%</p>
-                        {% if project.link %}
-                        <a href="{{ project.link }}" target="_blank" class="button-source">Source Code</a>
-                        {% else %}
-                        <p>Source code is not available</p>
-                        {% endif %}
                     </div>
-                    {% endfor %}
+
+                    <!-- Кнопки навигации -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Пагинация (точки) -->
+                    <div class="swiper-pagination"></div>
                 </div>
-            </div>
+        </section>
+        </main>
+    </div>
 
-            <!-- Кнопки навигации -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <!-- Пагинация (точки) -->
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
-    </main>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="/media/projects/background.js"></script>
+<!--    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>-->
 
-    <!-- Инициализация слайдера -->
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 3,    // Количество отображаемых проектов
-            spaceBetween: 30,    // Расстояние между слайдами
-            loop: true,          // Зацикленное прокручивание
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                1024: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                },
-                600: {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                },
-            }
-        });
-    </script>
+<!--    &lt;!&ndash; Инициализация слайдера &ndash;&gt;-->
+<!--    <script>-->
+<!--        var swiper = new Swiper('.swiper-container', {-->
+<!--            slidesPerView: 3,    // Количество отображаемых проектов-->
+<!--            spaceBetween: 30,    // Расстояние между слайдами-->
+<!--            loop: true,          // Зацикленное прокручивание-->
+<!--            pagination: {-->
+<!--                el: '.swiper-pagination',-->
+<!--                clickable: true,-->
+<!--            },-->
+<!--            navigation: {-->
+<!--                nextEl: '.swiper-button-next',-->
+<!--                prevEl: '.swiper-button-prev',-->
+<!--            },-->
+<!--            breakpoints: {-->
+<!--                1024: {-->
+<!--                    slidesPerView: 2,-->
+<!--                    spaceBetween: 20,-->
+<!--                },-->
+<!--                600: {-->
+<!--                    slidesPerView: 1,-->
+<!--                    spaceBetween: 10,-->
+<!--                },-->
+<!--            }-->
+<!--        });-->
+<!--    </script>-->
     <footer>
         <p>&copy; 2024 Lipatov Danila's Portfolio. All rights reserved.</p>
     </footer>
+    <script src="/media/projects/footer.js"></script>
 </body>
 </html>
