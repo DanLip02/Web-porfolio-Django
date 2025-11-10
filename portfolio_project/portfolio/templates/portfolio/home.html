@@ -4,38 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная</title>
-    <link rel="stylesheet" href="/media/projects/styles_3.css"> <!-- Подключение стилей, если есть -->
+    <link rel="stylesheet" href="/media/projects/styles_3.css">
+    <link rel="stylesheet" href="/media/projects/background.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/about/">CV / About my experience</a></li>
-                <li><a href="/contacts/">Contacts</a></li>
-                <li><a href="/projects/">My projects</a></li>
-            </ul>
-        </nav>
-    </header>
+     <div class="background" id="animatedBackground">
 
-    <main>
-        <h1 class="typing-text">Welcome to my web-portfolio!</h1>
-        <p>This is my own web-server where I share my projects, any helpful materials and my CV.</p>
-        <h2>Latest Updates</h2>
-        <div class="updates-section">
-            <ul>
-                {% for update in updates %}
-                <li>
-                    <h3> {{ update.title }}</h3>
-                    <p> {{ update.description }}</p>
-                    <small>Published on: {{ update.created_at }}</small>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </main>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/about/">CV / About my experience</a></li>
+                    <li><a href="/contacts/">Contacts</a></li>
+                    <li><a href="/projects/">My projects</a></li>
+                </ul>
+            </nav>
+        </header>
 
+        <main>
+            <h1 class="typing-text">Welcome to my web-portfolio!</h1>
+            <p>This is my own web-server where I share my projects, any helpful materials and my CV.</p>
+            <h2>Latest Updates</h2>
+            <div class="updates-section">
+                <ul>
+                    {% for update in updates %}
+                    <li>
+                        <h3> {{ update.title }}</h3>
+                        <p> {{ update.description }}</p>
+                        <small>Published on: {{ update.created_at }}</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </main>
+    </div>
     <footer>
         <p>&copy; 2024 Lipatov Danila's Portfolio. All rights reserved.</p>
     </footer>
+
+    <script src="/media/projects/background.js"></script>
+    <script src="/media/projects/footer.js"></script>
 </body>
 </html>

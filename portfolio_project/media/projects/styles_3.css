@@ -5,6 +5,14 @@ body {
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
+    min-height: 100vh; /* Минимальная высота = весь экран */
+    display: flex;
+    flex-direction: column; /* Располагаем элементы в колонку */
+}
+
+main {
+    flex: 1; /* Занимает все доступное пространство */
+    padding: 20px;
 }
 
 /* Стили для заголовков */
@@ -146,10 +154,10 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    position: bottom;
-    bottom: 0;
+    padding: 15px 0;
+    position: relative; /* Меняем на relative для нормального потока */
     width: 100%;
+    margin-top: auto; /* Это важно для прижатия к низу */
 }
 
 .typing-text {
