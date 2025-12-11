@@ -27,12 +27,12 @@ def about(request):
 #     contact_info = ContactInfo.objects.first()
 #     social_link = SocialLink.objects.all()
 #     # print(experiences)
-#     return render(request, 'portfolio/contacts.html', {'contact_info': contact_info})
+#     return render(request, 'portfolio/contacts_.html', {'contact_info': contact_info})
 
 def contact_view(request):
     social_links = get_social_links()
     context = {
         'social_links': social_links,
     }
-    return render(request, 'portfolio/contacts.html', context)
+    return render(request, 'portfolio/contacts_.html', context)
 # Create your views here.

@@ -25,13 +25,7 @@
 
             <!-- Profile Photo -->
             <div class="profile-photo flex-shrink-0 mb-6 md:mb-0">
-                {% if contact_info.profile_photo %}
-                    <img src="{{ contact_info.profile_photo.url }}" alt="Profile Photo" class="w-32 h-32 rounded-full object-cover">
-                {% else %}
-                    <div class="w-32 h-32 flex items-center justify-center bg-gray-200 rounded-full text-gray-500">
-                        No photo
-                    </div>
-                {% endif %}
+                    <img src="{% static 'app/my_photo.png' %}" alt="Profile Photo" class="w-32 h-32 rounded-full object-cover">
             </div>
 
             <!-- Description + Social Links -->
