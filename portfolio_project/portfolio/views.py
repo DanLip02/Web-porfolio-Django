@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Project, Experience, UpdateLog, ContactInfo, SocialLink
+from .models import Project, Experience, UpdateLog, ContactInfo, get_social_links
 
 # def project_list(request):
 #     projects = Project.objects.all()
@@ -23,9 +23,16 @@ def about(request):
     # print(experiences)
     return render(request, 'portfolio/about.html', {'experiences': experiences})
 
-def contacts(request):
-    contact_info = ContactInfo.objects.first()
-    social_link = SocialLink.objects.all()
-    # print(experiences)
-    return render(request, 'portfolio/contacts.html', {'contact_info': contact_info})
+# def contacts(request):
+#     contact_info = ContactInfo.objects.first()
+#     social_link = SocialLink.objects.all()
+#     # print(experiences)
+#     return render(request, 'portfolio/contacts_.html', {'contact_info': contact_info})
+
+def contact_view(request):
+    social_links = get_social_links()
+    context = {
+        'social_links': social_links,
+    }
+    return render(request, 'portfolio/contacts_.html', context)
 # Create your views here.

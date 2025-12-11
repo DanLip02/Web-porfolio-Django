@@ -20,12 +20,8 @@
     <main>
         <section>
             <div class="contact-info">
-                <div class="profile-photo">
-                    {% if contact_info.profile_photo %}
-                        <img src="{{ contact_info.profile_photo.url }}" alt="Profile Photo">
-                    {% else %}
-                        <p> No photo </p>
-                    {% endif %}
+                <div class="profile-photo flex-shrink-0 mb-6 md:mb-0">
+                    <img src="{% static 'app/my_photo.png' %}" alt="Profile Photo" class="w-32 h-32 rounded-full object-cover">
                 </div>
 
                 <div class="description">

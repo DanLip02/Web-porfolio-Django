@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Подключаем Tailwind -->
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <ul class="flex gap-6">
+                <li><a href="/" class="hover:text-blue-600 transition">Main</a></li>
+                <li><a href="/about/" class="hover:text-blue-600 transition">CV / About my experience</a></li>
+                <li><a href="/projects/" class="hover:text-blue-600 transition">My projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <section class="bg-white rounded-2xl shadow-lg p-8 md:flex md:items-center md:gap-8">
+
+            <!-- Profile Photo -->
+            <div class="profile-photo flex-shrink-0 mb-6 md:mb-0">
+                {% if contact_info.profile_photo %}
+                    <img src="{{ contact_info.profile_photo.url }}" alt="Profile Photo" class="w-32 h-32 rounded-full object-cover">
+                {% else %}
+                    <div class="w-32 h-32 flex items-center justify-center bg-gray-200 rounded-full text-gray-500">
+                        No photo
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Description + Social Links -->
+            <div class="flex-1">
+                <div class="description mb-6 text-gray-700">
+                    <p>{{ contact_info.short_description }}</p>
+                </div>
+
+                <div class="social-links flex gap-4">
+                    {% for social in social_links %}
+                        <a href="{{ social.url }}" target="_blank" class="hover:opacity-80 transition">
+                            <img src="{{ social.icon_url }}" alt="{{ social.name }} Icon" class="w-6 h-6">
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white shadow-inner mt-12">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-500 text-sm">
+            &copy; 2025 Lipatov Danila's Portfolio. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
