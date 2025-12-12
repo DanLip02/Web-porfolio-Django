@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Project, Experience, Technology, Achievement, ContactInfo, SocialLink
+from .models import Project, Experience, Technology, Achievement, ContactInfo
+# SocialLink
 from django.utils.html import format_html
 
 # Register your models here.
@@ -30,10 +31,10 @@ class ExperienceAdmin(admin.ModelAdmin):
 
 admin.site.register(Experience, ExperienceAdmin)
 
-class SocialLinkInline(admin.TabularInline):
-    model = SocialLink
-    extra = 1
-    fields = ('platform_name', 'icon', 'url')
+# class SocialLinkInline(admin.TabularInline):
+#     model = SocialLink
+#     extra = 1
+#     fields = ('platform_name', 'icon', 'url')
     # readonly_fields = ('icon_image', 'url_link')
 
     # def icon_image(self, obj):
@@ -48,7 +49,7 @@ class SocialLinkInline(admin.TabularInline):
 
 class ContactInfoAdmin(admin.ModelAdmin):
     list_display = ['id', 'short_description', 'profile_photo_display']
-    inlines = [SocialLinkInline]
+    # inlines = [SocialLinkInline]
 
     def profile_photo_display(self, obj):
         if obj.profile_photo:

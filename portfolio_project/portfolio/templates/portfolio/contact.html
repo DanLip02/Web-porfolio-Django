@@ -1,3 +1,4 @@
+<!--{% load static %}-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,38 +7,49 @@
     <title>Contacts</title>
     <script src="https://cdn.tailwindcss.com"></script> <!-- Подключаем Tailwind -->
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<!--<body class="bg-gray-50 text-gray-800 font-sans">-->
+<body class="flex flex-col min-h-screen text-gray-800 font-sans bg-[url('/media/background/Background_v_2.png')] bg-cover bg-center bg-no-repeat">
 
     <!-- Header -->
-    <header class="bg-white shadow-md">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <ul class="flex gap-6">
-                <li><a href="/" class="hover:text-blue-600 transition">Main</a></li>
-                <li><a href="/about/" class="hover:text-blue-600 transition">CV / About my experience</a></li>
-                <li><a href="/projects/" class="hover:text-blue-600 transition">My projects</a></li>
+    <header class="bg-transparent">
+        <nav class="flex items-center px-4 py-4 ">
+            <ul class="flex gap-4">
+                {% for button in buttons %}
+                    <li>
+                        <a href="{{ button.link }}">
+                            <img src="{{ button.img_url }}" alt="{{ button.name }}"
+                                 class="h-15 w-auto hover:rotate-12 transition-transform duration-200">
+                        </a>
+                    </li>
+                {% endfor %}
             </ul>
         </nav>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12">
-        <section class="bg-white rounded-2xl shadow-lg p-8 md:flex md:items-center md:gap-8">
+    <main class="flex-1 px-4 py-4">
 
-            <!-- Profile Photo -->
+        <section class="p-8 md:flex md:items-center md:gap-8">
+
             <div class="profile-photo flex-shrink-0 mb-6 md:mb-0">
-                    <img src="{% static 'app/my_photo.png' %}" alt="Profile Photo" class="w-32 h-32 rounded-full object-cover">
+                    <img src="{{ profile_photo_url }}" alt="Profile Photo" class="w-32 h-32 rounded-full object-cover">
             </div>
 
-            <!-- Description + Social Links -->
             <div class="flex-1">
                 <div class="description mb-6 text-gray-700">
-                    <p>{{ contact_info.short_description }}</p>
+<!--                    <p>{{ contact_info.short_description }}</p>-->
+                     <h1 class="text-3xl font-bold text-white mb-2">Danila Lipatov</h1>
+
+                    <p class="text-lg text-gray-300">
+                        Risk Data Analyst | Frontend Explorer | Passionate about data, analytics, and clean UI design
+                    </p>
                 </div>
 
-                <div class="social-links flex gap-4">
+                <div class="social-links flex gap-10">
+                    <h1 class="text-lg font-bold text-gray-300 mb-1">It's my social links</h1>
                     {% for social in social_links %}
                         <a href="{{ social.url }}" target="_blank" class="hover:opacity-80 transition">
-                            <img src="{{ social.icon_url }}" alt="{{ social.name }} Icon" class="w-6 h-6">
+                            <img src="{{ social.icon_url }}" alt="{{ social.name }} Icon" class="w-10 h-10">
                         </a>
                     {% endfor %}
                 </div>
@@ -46,9 +58,8 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white shadow-inner mt-12">
-        <div class="container mx-auto px-6 py-4 text-center text-gray-500 text-sm">
+    <footer class="shadow-inner mt-12">
+        <div class="container mx-auto text-center text-white text-sm">
             &copy; 2025 Lipatov Danila's Portfolio. All rights reserved.
         </div>
     </footer>

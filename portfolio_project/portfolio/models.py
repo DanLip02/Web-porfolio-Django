@@ -11,6 +11,13 @@ SOCIAL_URLS = {
     'pastebin_icon': 'https://pastebin.com/u/Danila_lipatov'
 }
 
+BUTTON_URLS = {
+    "home": "/home/",
+    "about": "/about/",
+    "projects": "/projects/",
+    "contact": "/contact/",
+}
+
 
 class Project(models.Model):
     CATEGORY_CHOICES = [
@@ -96,9 +103,22 @@ def get_social_links():
         if url:
             links.append({
                 'name': name.capitalize(),
-                'icon_url': f'/media/social_icons/{filename}',
+                'icon_url': f'{settings.MEDIA_URL}social_icons/{filename}',
                 'url': url,
             })
     return links
+
+def list_buttons():
+    folder = os.path.join(settings.MEDIA_ROOT, "buttons")
+    buttons = []
+    for filename in os.listdir(folder):
+        if os.path.isfile(os.path.join(folder, filename)):
+            name, ext = os.path.splitext(filename)
+            buttons.append({
+                "name": name.capitalize(),
+                "img_url": f"{settings.MEDIA_URL}buttons/{filename}",
+                "link": f"/{name.lower()}/",
+            })
+    return buttons
 
 # Create your models here.
