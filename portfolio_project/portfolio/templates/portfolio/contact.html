@@ -27,15 +27,12 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 px-4 py-4">
+    <main class="flex-1 px-4 py-4 flex justify-end items-start" >
 
-        <section class="p-8 md:flex md:items-center md:gap-8">
-
-            <div class="profile-photo flex-shrink-0 mb-6 md:mb-0">
-                    <img src="{{ profile_photo_url }}" alt="Profile Photo" class="w-32 h-32 rounded-full object-cover">
-            </div>
+        <section class="p-8 -mt-6 md:flex md:items-center md:gap-8">
 
             <div class="flex-1">
+
                 <div class="description mb-6 text-gray-700">
 <!--                    <p>{{ contact_info.short_description }}</p>-->
                      <h1 class="text-3xl font-bold text-white mb-2">Danila Lipatov</h1>
@@ -53,6 +50,10 @@
                         </a>
                     {% endfor %}
                 </div>
+            </div>
+
+            <div class="profile-photo flex-shrink-0 mb-6 md:mb-0">
+                <img src="{{ profile_photo_url }}" alt="Profile Photo" class="w-32 h-32 rounded-full object-cover">
             </div>
 
         </section>

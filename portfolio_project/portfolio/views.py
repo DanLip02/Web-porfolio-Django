@@ -16,7 +16,13 @@ def project_tree(request):
 
 def home(request):
     updates = UpdateLog.objects.order_by('-created_at')[:5]
-    return render(request, 'portfolio/home.html', {'updates': updates})
+    buttons = list_buttons()
+    context = {
+        'updates' : updates,
+        'buttons': buttons
+        # 'short_description': short_description
+    }
+    return render(request, 'portfolio/home_dub.html', context)
 
 def about(request):
     experiences = Experience.objects.all()
