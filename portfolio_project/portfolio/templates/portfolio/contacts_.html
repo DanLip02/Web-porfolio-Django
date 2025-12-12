@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="/media/projects/style_contact.css"> <!-- Подключение стилей, если есть -->
+    <link rel="stylesheet" href="/media/projects/background.css">
+</head>
+<body>
+    <div class="background" id="animatedBackground">
+        <header>
+                <nav>
+                    <ul>
+                        <li><a href="/">Main</a></li>
+                        <li><a href="/about/">CV / About my experience</a></li>
+                        <li><a href="/projects/">My projects</a></li>
+                    </ul>
+                </nav>
+        </header>
+        <div class="contact-info">
+            <div class="profile-photo">
+                {% if contact_info.profile_photo %}
+                    <img src="{{ contact_info.profile_photo.url }}" alt="Profile Photo">
+                {% else %}
+                    <p> No photo </p>
+                {% endif %}
+            </div>
+
+            <div class="description">
+                <p>{{ contact_info.short_description }}</p>
+            </div>
+
+            <div class="social-links">
+                {% for social_link in contact_info.social_links.all %}
+                    <a href="{{ social_link.url }}" target="_blank" class="social-link">
+                        {% if social_link.icon %}
+                            <img src="{{ social_link.icon.url }}" alt="{{ social_link.platform_name }} Icon">
+                        {% else %}
+                            {{ social_link.platform_name }}
+                        {% endif %}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Lipatov Danila's Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script src="/media/projects/background.js"></script>
+    <script src="/media/projects/footer.js"></script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+/* === Основные стили === */
 html, body {
     height: 100%;
     margin: 0;
@@ -10,16 +11,9 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
-    min-height: 100vh; /* Минимальная высота = весь экран */
-    display: flex;
-    flex-direction: column; /* Располагаем элементы в колонку */
 }
 
-main {
-    flex: 1; /* Занимает все доступное пространство */
-    padding: 20px;
-}
-
+/* === Header / Navigation === */
 header {
     background-color: #333;
     color: white;
@@ -48,6 +42,7 @@ nav ul li a:hover {
     background-color: #111;
 }
 
+/* === Main content === */
 main {
     flex: 1; /* Растягивается между header и footer */
     padding: 20px;
@@ -59,84 +54,6 @@ h1 {
     margin-top: 30px;
     font-size: 36px;
 }
-
-.project-card:hover {
-    transform: scale(1.02);
-}
-
-/* Заголовок проекта */
-.project-card h2 {
-    margin-top: 0;
-}
-
-/* Добавление изображения в проект */
-.project-card img {
-    width: 100%; /* Изображение заполняет контейнер по ширине */
-    height: 200px; /* Фиксированная высота изображения */
-    object-fit: cover; /* Изображение заполняет контейнер, сохраняя пропорции и обрезается */
-    border-bottom: 1px solid #ddd;
-    border-radius: 8px 8px 0 0;
-    display: block; /* Для стабильного отображения */
-}
-
-/* Контейнер для описания проекта */
-.project-description {
-    padding: 10px 0;
-}
-
-/* Прогресс выполнения */
-.progress-bar {
-    background-color: #f3f3f3;
-    border-radius: 4px;
-    position: relative;
-    height: 20px;
-    width: 100%;
-    margin: 10px 0;
-}
-
-.progress-bar-fill {
-    height: 100%;
-    background-color: #4CAF50;
-    border-radius: 4px;
-    transition: width 0.4s ease-in-out;
-}
-
-/* Стили для кнопки "Посмотреть Source Code" */
-.button-source {
-    background-color: #008CBA; /* Цвет кнопки */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.button-source:hover {
-    background-color: #005f73; /* Цвет при наведении */
-}
-
-a {
-    color: #1e90ff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    position: relative; /* Меняем на relative для нормального потока */
-    width: 100%;
-    margin-top: auto; /* Это важно для прижатия к низу */
 
 h2, h3 {
     font-family: 'Roboto', sans-serif;
