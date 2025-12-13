@@ -26,8 +26,13 @@ def home(request):
 
 def about(request):
     experiences = Experience.objects.all()
-    # print(experiences)
-    return render(request, 'portfolio/about.html', {'experiences': experiences})
+    buttons = list_buttons()
+    context = {
+        'experiences': experiences,
+        'buttons': buttons
+        # 'short_description': short_description
+    }
+    return render(request, 'portfolio/about.html', context)
 
 # def contacts(request):
 #     contact_info = ContactInfo.objects.first()

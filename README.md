@@ -7,7 +7,7 @@ To start using server do following:
 
 After this you will see 
 
-    Starting development server at http://127.0.0.1:8000/
+    Starting development server at http://127.0.0.1:8000/home/
 
 And if you will visit this server - You will see my portfolio
 

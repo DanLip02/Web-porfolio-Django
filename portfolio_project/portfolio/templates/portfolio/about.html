@@ -1,59 +1,173 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV / About my experience</title>
-    <link rel="stylesheet" href="/media/projects/style_about_new.css">
+    <title>Contacts</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Подключаем Tailwind -->
 </head>
-<body>
+<body class="flex flex-col min-h-screen text-gray-800 font-sans bg-[url('/media/background/Background_v_2.png')] bg-cover bg-center bg-no-repeat">
     <!-- navigation menu -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Main</a></li>
-                <li><a href="/contact/">Contacts</a></li>
-                <li><a href="/projects/">My projects</a></li>
+    <header class="bg-transparent">
+        <nav class="flex items-center px-4 py-4 ">
+            <ul class="flex gap-4">
+                {% for button in buttons %}
+                    <li>
+                        <a href="{{ button.link }}">
+                            <img src="{{ button.img_url }}" alt="{{ button.name }}"
+                                 class="h-15 w-auto hover:rotate-12 transition-transform duration-200">
+                        </a>
+                    </li>
+                {% endfor %}
             </ul>
         </nav>
     </header>
-    <main>
-        <section>
-            <h1 class="typing-text">CV / About my experience</h1>
-            <div class="experience-section">
-                {% if experiences %}
-                    {% for experience in experiences %}
-                        <div class="experience-card">
-                            <h2 class="experience-title">{{ experience.institution }} - {{ experience.role }}</h2>
-                            <p class="experience-dates">{{ experience.start_date }} - {% if experience.end_date %}{{ experience.end_date }}{% else %}по настоящее время{% endif %}</p>
-                            <p class="experience-description">{{ experience.description }}</p>
-                            {% if experience.technologies %}
-                                <h4>Used Technologies:</h4>
-                                <ul class="tech-list">
-                                    {% for tech in experience.technologies.all %}
-                                        <li>{{ tech.name }}</li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
+    <main class="flex-1 px-4 py-4 flex justify-end items-start">
+        <section class="p-8 -mt-6 md:flex md:items-center md:gap-8">
+            <div class="flex-1">
+                <div class="flex items-center justify-center min-h-[50vh]">
+                    <div class="text-center animate-pulse">
+                        <h1 class="text-4xl md:text-6xl font-extrabold mb-4
+                                   bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600
+                                   bg-clip-text text-transparent">
+                            CV / About my experience
+                        </h1>
+                    </div>
+                </div>
 
-                            {% if experience.achievements %}
-                                <h4>Achievements:</h4>
-                                <ul class="achievement-list">
-                                    {% for achievement in experience.achievements.all %}
-                                        <li>{{ achievement.description }}</li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-                        </div> <!-- close tag for each card experience-card -->
-                    {% endfor %}
+                {% if experiences %}
+                    <div class="relative">
+                        <!-- Центральная линия для десктопов -->
+                        <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-500 to-purple-500 h-full"></div>
+
+                        <div class="space-y-12">
+                            {% for experience in experiences %}
+                                <!-- Карточка -->
+                                <div class="relative {% cycle 'lg:pr-8 lg:pl-0' 'lg:pl-8 lg:pr-0' %}">
+                                    <!-- Точка на временной линии -->
+                                    <div class="hidden lg:block absolute top-6 {% cycle 'left-1/2 -translate-x-1/2' 'right-1/2 translate-x-1/2' %}
+                                                w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full
+                                                border-4 border-white shadow-lg z-10"></div>
+
+                                    <!-- Сама карточка -->
+                                    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl
+                                                transform transition-all duration-300 hover:scale-[1.02]
+                                                hover:shadow-3xl overflow-hidden
+                                                {% cycle 'lg:mr-auto lg:w-5/12' 'lg:ml-auto lg:w-5/12' %}">
+
+                                        <!-- Градиентная полоса сверху -->
+                                        <div class="h-2 bg-gradient-to-r {% cycle 'from-blue-600 to-purple-600' 'from-purple-600 to-pink-600' %}"></div>
+
+                                        <div class="p-6 md:p-8">
+                                            <!-- Заголовок карточки -->
+                                            <div class="flex items-start justify-between mb-4">
+                                                <div>
+                                                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                                                        {{ experience.role }}
+                                                    </h2>
+                                                    <h3 class="text-xl text-blue-600 dark:text-blue-400 font-semibold">
+                                                        {{ experience.institution }}
+                                                    </h3>
+                                                </div>
+                                                <!-- Иконка -->
+                                                <div class="text-3xl {% cycle 'text-blue-500' 'text-purple-500' %}">
+                                                    {% cycle '🏢' '💼' %}
+                                                </div>
+                                            </div>
+
+                                            <!-- Даты -->
+                                            <div class="mb-6">
+                                                <span class="inline-flex items-center px-4 py-2 rounded-full
+                                                            {% cycle 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+                                                                     'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' %}
+                                                            text-sm font-medium">
+                                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                                                    </svg>
+                                                    {{ experience.start_date|date:"M Y" }} -
+                                                    {% if experience.end_date %}
+                                                        {{ experience.end_date|date:"M Y" }}
+                                                    {% else %}
+                                                        Present
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+
+                                            <!-- Описание -->
+                                            <div class="mb-6">
+                                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                                    {{ experience.description }}
+                                                </p>
+                                            </div>
+
+                                            <!-- Технологии -->
+                                            {% if experience.technologies.all %}
+                                                <div class="mb-6">
+                                                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                                                        🛠 Technologies Used
+                                                    </h4>
+                                                    <div class="flex flex-wrap gap-2">
+                                                        {% for tech in experience.technologies.all %}
+                                                            <span class="px-3 py-1.5 text-sm rounded-full
+                                                                        {% cycle 'bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800'
+                                                                                 'bg-purple-50 text-purple-700 border border-purple-200 dark:bg-purple-900/30 dark:text-purple-300 dark:border-purple-800' %}">
+                                                                {{ tech.name }}
+                                                            </span>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+
+                                            <!-- Достижения -->
+                                            {% if experience.achievements.all %}
+                                                <div>
+                                                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                                                        🏆 Achievements
+                                                    </h4>
+                                                    <ul class="space-y-2">
+                                                        {% for achievement in experience.achievements.all %}
+                                                            <li class="flex items-start">
+                                                                <span class="inline-block w-2 h-2 mt-2 mr-3 rounded-full
+                                                                            {% cycle 'bg-blue-500' 'bg-purple-500' %}"></span>
+                                                                <span class="text-gray-700 dark:text-gray-300">
+                                                                    {{ achievement.description }}
+                                                                </span>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+
+                                        <!-- Декоративный уголок -->
+                                        <div class="absolute bottom-4 right-4 text-4xl opacity-10
+                                                    {% cycle 'text-blue-500' 'text-purple-500' %}">
+                                            {% cycle '◢' '◣' %}
+                                        </div>
+                                    </div>
+
+                                    <!-- Стрелка для мобильной версии -->
+                                    <div class="lg:hidden absolute left-6 top-6 transform -translate-x-1/2
+                                                w-4 h-4 bg-gradient-to-r from-blue-600 to-purple-600
+                                                rotate-45"></div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 {% else %}
-                    <p>No data found</p>
+                    <div class="text-center py-12">
+                        <div class="text-6xl mb-4">📝</div>
+                        <p class="text-xl text-gray-600 dark:text-gray-400">No experience data available</p>
+                    </div>
                 {% endif %}
             </div>
         </section>
-    <main>
-<footer>
-    <p>&copy; 2025 Lipatov Danila's Portfolio. All rights reserved.</p>
-</footer>
+    </main>
+
+    <footer class="shadow-inner mt-12">
+        <div class="container mx-auto text-center text-white text-sm">
+            &copy; 2025 Lipatov Danila's Portfolio. All rights reserved.
+        </div>
+    </footer>
 </body>
 </html>

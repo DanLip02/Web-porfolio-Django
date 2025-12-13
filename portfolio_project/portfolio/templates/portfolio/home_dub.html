@@ -28,12 +28,12 @@
         <section class="p-8 -mt-6 md:flex md:items-center md:gap-8" >
             <div class="flex-1">
                  <div class="mb-8">
-                    <h1 class="typing-text text-4xl md:text-6xl font-extrabold mb-4
+                    <h1 class="text-4xl md:text-6xl font-extrabold mb-4
                                bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600
-                               bg-clip-text text-transparent animate-gradient-x">
+                               bg-clip-text text-transparent
+                               animate-slide-in-left hover:underline">
                         Welcome to my web-portfolio!
                     </h1>
-
                     <div class="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500
                                 rounded-full mb-6 animate-pulse"></div>
 
@@ -79,7 +79,7 @@
 <!--                            </p>-->
                         </div>
                     </div>
-                 <div>
+                   </div>
                    <ul class="space-y-4">
                         {% for update in updates %}
                         <li class="group relative">
@@ -130,7 +130,7 @@
                                 <!-- Декоративный элемент при наведении -->
                                 <div class="absolute top-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100
                                             transition-opacity duration-500">
-                                    <div class="absolute top-2 right-2 w-12 h-12 border-2 border-purple-300
+                                    <div class="absolute top-2 right-2 w-12 h-12 border-2 border-purple-700
                                                 rounded-full animate-ping"></div>
                                 </div>
                             </div>
