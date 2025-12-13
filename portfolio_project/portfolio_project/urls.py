@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-
+from django.shortcuts import redirect
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', include('portfolio.urls'))
+    # path('', include('portfolio.urls'))
+
+    path('', include('portfolio.urls')),
+    #
+    # # Перенаправление с корня на /home/
+    # path('', lambda request: redirect('/home/')),
 ]
