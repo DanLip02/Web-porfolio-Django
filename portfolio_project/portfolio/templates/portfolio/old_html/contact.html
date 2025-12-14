@@ -1,0 +1,218 @@
+<!--{% load static %}-->
+
+<!--<div style="background: #f0f0f0; padding: 10px; margin: 10px 0; border: 2px solid red;">-->
+<!--    <h3>Отладка:</h3>-->
+<!--    <p>cv: {{ cv }}</p>-->
+<!--    <p>cv exists: {{ cv|yesno:"Да,Нет" }}</p>-->
+<!--    <p>MEDIA_URL: {{ MEDIA_URL }}</p>-->
+<!--    <p>BASE_DIR: {{ request.META.BASE_DIR }}</p>-->
+<!--</div>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Подключаем Tailwind -->
+</head>
+<!--<body class="bg-gray-50 text-gray-800 font-sans">-->
+<body class="flex flex-col min-h-screen text-gray-800 font-sans bg-[url('/media/background/Background_v_2.png')] bg-cover bg-center bg-no-repeat">
+
+    <!-- Header -->
+    <header class="bg-transparent">
+        <nav class="flex items-center px-4 py-4 ">
+            <ul class="flex gap-4">
+                {% for button in buttons %}
+                    <li>
+                        <a href="{{ button.link }}">
+                            <img src="{{ button.img_url }}" alt="{{ button.name }}"
+                                 class="h-15 w-auto hover:rotate-12 transition-transform duration-200">
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-4 py-4 flex justify-end items-start" >
+
+        <section class="p-8 mt-50 md:flex md:items-center md:gap-8">
+
+            <div class="flex-1">
+                <div class="flex items-center justify-between mb-8">
+
+                    <h1 class="text-4xl md:text-5xl font-bold
+                               bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600
+                               bg-clip-text text-transparent">
+                        Danila Lipatov
+                    </h1>
+                    <div class="profile-photo relative group ml-4">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600
+                                    rounded-full blur opacity-70 group-hover:opacity-100
+                                    transition-opacity duration-500"></div>
+                        <img src="{{ profile_photo_url }}" alt="Profile Photo"
+                             class="relative w-30 h-30 md:w-30 md:h-30 rounded-full object-cover
+                                    border-3 md:border-4 border-white shadow-lg group-hover:scale-105
+                                    transition-transform duration-500">
+                    </div>
+                </div>
+
+                {% if cv %}
+                <div class="mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-4 p-4 bg-white/0 backdrop-blur-sm
+                                    rounded-xl border border-white/0">
+
+                            <a href="{{ cv.download_url|default:cv.file_url }}"
+                               download="Lipatov_Danila_Resume_{{ cv.file_name|default:'CV.pdf' }}"
+                               class="relative p-3 bg-white/25 rounded-lg group-hover:animate-pulse
+                                      transition-all duration-300"
+                               title="Download CV">
+                                <div class="absolute -inset-1 border-2 border-blue-500/30
+                                            rounded-lg opacity-0 group-hover:opacity-100
+                                            transition-opacity duration-300"></div>
+
+                                <svg class="relative w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </a>
+                            <div>
+                                <div class="font-bold
+                               bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600
+                               bg-clip-text text-transparent">You can download my CV</div>
+                                <div class="text-sm text-white">Hover over the icon</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="description mb-8">
+
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="h-1 w-12 bg-blue-500 rounded-full"></div>
+                        <div class="h-1 w-24 bg-purple-500 rounded-full"></div>
+                        <div class="h-1 w-12 bg-pink-500 rounded-full"></div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 group hover:bg-blue-50/50 p-2 rounded-lg transition-colors">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full group-hover:scale-150 transition-transform"></div>
+                            <span class="font-semibold text-blue-700">Risk Data Analyst</span>
+                            <span class="text-white text-sm">| Data-driven risk assessment & predictive analytics</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 group hover:bg-purple-50/50 p-2 rounded-lg transition-colors">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full group-hover:scale-150 transition-transform"></div>
+                            <span class="font-semibold text-purple-700">AI Researcher & Data Scientist</span>
+                            <span class="text-white text-sm">| LLMs, ML pipelines, MLOps</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 group hover:bg-green-50/50 p-2 rounded-lg transition-colors">
+                            <div class="w-2 h-2 bg-green-500 rounded-full group-hover:scale-150 transition-transform"></div>
+                            <span class="font-semibold text-green-700">DevOps Engineer</span>
+                            <span class="text-white text-sm">| CI/CD, cloud infrastructure, automation</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 group hover:bg-pink-50/50 p-2 rounded-lg transition-colors">
+                            <div class="w-2 h-2 bg-pink-500 rounded-full group-hover:scale-150 transition-transform"></div>
+                            <span class="font-semibold text-pink-700">Frontend Developer</span>
+                            <span class="text-white text-sm">| UI/UX design, interactive web experiences</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 group hover:bg-orange-50/50 p-2 rounded-lg transition-colors">
+                            <div class="w-2 h-2 bg-orange-500 rounded-full group-hover:scale-150 transition-transform"></div>
+                            <span class="font-semibold text-orange-700">Creative Innovator</span>
+                            <span class="text-white text-sm">| Side projects, technology exploration</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                    <div class="mb-6 p-5 bg-gradient-to-r from-blue-50/70 to-purple-50/70
+                                rounded-xl border border-blue-200/30">
+                        <p class="text-gray-700 italic text-center text-lg">
+                            Passionate about the synergy between data science, AI, and elegant engineering
+                        </p>
+                    </div>
+
+                    <div class="p-5 bg-white/30 backdrop-blur-sm rounded-2xl border border-white/40">
+                        <h4 class="text-lg font-bold text-gray-800 mb-4 text-center">Areas of Expertise</h4>
+
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-gray-700">Data Science & ML</span>
+                                    <span class="text-sm font-bold text-blue-600">90%</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-blue-500 to-cyan-500
+                                                animate-pulse" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-gray-700">Frontend Development</span>
+                                    <span class="text-sm font-bold text-purple-600">60%</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500
+                                                animate-pulse" style="width: 60%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-gray-700">Backend & DevOps</span>
+                                    <span class="text-sm font-bold text-green-600">90%</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-green-500 to-emerald-500
+                                                animate-pulse" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-gray-700">AI & LLMs</span>
+                                    <span class="text-sm font-bold text-orange-600">75%</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-orange-500 to-yellow-500
+                                                animate-pulse" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-gray-600 text-center mt-5 italic">
+                            Continuously learning and exploring new technologies
+                        </p>
+                    </div>
+                </div>
+
+                </div>
+
+                <div class="social-links flex gap-10">
+                    <h1 class="text-lg font-bold text-gray-300 mb-1">It's my social links</h1>
+                    {% for social in social_links %}
+                        <a href="{{ social.url }}" target="_blank" class="hover:opacity-80 transition">
+                            <img src="{{ social.icon_url }}" alt="{{ social.name }} Icon" class="h-10 w-auto hover:-rotate-12 hover:scale-110 transition-all duration-300">
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="shadow-inner mt-12">
+        <div class="container mx-auto text-center text-white text-sm">
+            &copy; 2025 Lipatov Danila's Portfolio. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
