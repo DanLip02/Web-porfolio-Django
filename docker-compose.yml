@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  portfolio-django:
+    build: .
+    container_name: portfolio_django
+    restart: unless-stopped
+    volumes:
+      - .:/portfolio_project
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "python portfolio_project/manage.py migrate &&
+             python portfolio_project/manage.py runserver 0.0.0.0:8000"
+    environment:
+      DEBUG: "True"
+      SECRET_KEY: "django-insecure-dev-key-for-docker-123"
+      PYTHONUNBUFFERED: "1"
