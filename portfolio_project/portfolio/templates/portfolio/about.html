@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
-    <script src="https://cdn.tailwindcss.com"></script> <!-- Подключаем Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script> <!-- load Tailwind -->
 </head>
 <body class="flex flex-col min-h-screen text-gray-800 font-sans bg-[url('/media/background/Background_v_2.png')] bg-cover bg-center bg-no-repeat">
     <!-- navigation menu -->
@@ -37,29 +37,24 @@
 
                 {% if experiences %}
                     <div class="relative">
-                        <!-- Центральная линия для десктопов -->
                         <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-500 to-purple-500 h-full"></div>
 
                         <div class="space-y-12">
                             {% for experience in experiences %}
-                                <!-- Карточка -->
                                 <div class="relative {% cycle 'lg:pr-8 lg:pl-0' 'lg:pl-8 lg:pr-0' %}">
-                                    <!-- Точка на временной линии -->
                                     <div class="hidden lg:block absolute top-6 {% cycle 'left-1/2 -translate-x-1/2' 'right-1/2 translate-x-1/2' %}
                                                 w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full
                                                 border-4 border-white shadow-lg z-10"></div>
 
-                                    <!-- Сама карточка -->
                                     <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl
                                                 transform transition-all duration-300 hover:scale-[1.02]
                                                 hover:shadow-3xl overflow-hidden
                                                 {% cycle 'lg:mr-auto lg:w-5/12' 'lg:ml-auto lg:w-5/12' %}">
 
-                                        <!-- Градиентная полоса сверху -->
                                         <div class="h-2 bg-gradient-to-r {% cycle 'from-blue-600 to-purple-600' 'from-purple-600 to-pink-600' %}"></div>
 
                                         <div class="p-6 md:p-8">
-                                            <!-- Заголовок карточки -->
+
                                             <div class="flex items-start justify-between mb-4">
                                                 <div>
                                                     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
@@ -69,13 +64,11 @@
                                                         {{ experience.institution }}
                                                     </h3>
                                                 </div>
-                                                <!-- Иконка -->
                                                 <div class="text-3xl {% cycle 'text-blue-500' 'text-purple-500' %}">
                                                     {% cycle '🏢' '💼' %}
                                                 </div>
                                             </div>
 
-                                            <!-- Даты -->
                                             <div class="mb-6">
                                                 <span class="inline-flex items-center px-4 py-2 rounded-full
                                                             {% cycle 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
@@ -93,14 +86,12 @@
                                                 </span>
                                             </div>
 
-                                            <!-- Описание -->
                                             <div class="mb-6">
                                                 <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
                                                     {{ experience.description }}
                                                 </p>
                                             </div>
 
-                                            <!-- Технологии -->
                                             {% if experience.technologies.all %}
                                                 <div class="mb-6">
                                                     <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
@@ -118,7 +109,6 @@
                                                 </div>
                                             {% endif %}
 
-                                            <!-- Достижения -->
                                             {% if experience.achievements.all %}
                                                 <div>
                                                     <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
@@ -139,14 +129,12 @@
                                             {% endif %}
                                         </div>
 
-                                        <!-- Декоративный уголок -->
                                         <div class="absolute bottom-4 right-4 text-4xl opacity-10
                                                     {% cycle 'text-blue-500' 'text-purple-500' %}">
                                             {% cycle '◢' '◣' %}
                                         </div>
                                     </div>
 
-                                    <!-- Стрелка для мобильной версии -->
                                     <div class="lg:hidden absolute left-6 top-6 transform -translate-x-1/2
                                                 w-4 h-4 bg-gradient-to-r from-blue-600 to-purple-600
                                                 rotate-45"></div>

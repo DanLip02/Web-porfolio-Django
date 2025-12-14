@@ -83,15 +83,12 @@
                    <ul class="space-y-4">
                         {% for update in updates %}
                         <li class="group relative">
-                            <!-- Фоновая карточка с градиентом -->
                             <div class="absolute inset-0 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 rounded-2xl
                                         group-hover:from-blue-100 group-hover:via-purple-100 group-hover:to-pink-100
                                         transition-all duration-300 transform group-hover:scale-[1.02]
                                         shadow-lg group-hover:shadow-xl"></div>
 
-                            <!-- Контент -->
                             <div class="relative p-6">
-                                <!-- Заголовок с иконкой -->
                                 <div class="flex items-start gap-3 mb-3">
                                     <div class="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg
                                                 group-hover:from-blue-600 group-hover:to-purple-700
@@ -108,13 +105,11 @@
                                     </h3>
                                 </div>
 
-                                <!-- Описание -->
                                 <p class="text-gray-700 mb-4 group-hover:text-gray-900 transition-colors duration-300
                                            line-clamp-2">
                                     {{ update.description }}
                                 </p>
 
-                                <!-- Дата -->
                                 <div class="flex items-center gap-2">
                                     <svg class="w-4 h-4 text-gray-400 group-hover:text-purple-500 transition-colors duration-300"
                                          fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,7 +122,6 @@
                                     </small>
                                 </div>
 
-                                <!-- Декоративный элемент при наведении -->
                                 <div class="absolute top-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100
                                             transition-opacity duration-500">
                                     <div class="absolute top-2 right-2 w-12 h-12 border-2 border-purple-700
@@ -142,25 +136,11 @@
         </section>
     </main>
 
-
     <footer class="shadow-inner mt-12">
         <div class="container mx-auto text-center text-white text-sm">
             &copy; 2025 Lipatov Danila's Portfolio. All rights reserved.
         </div>
     </footer>
 
-<!--<script>-->
-<!--    // JS для показа popup при клике на карточку проекта-->
-<!--    document.querySelectorAll('.project-card').forEach(card => {-->
-<!--        card.addEventListener('click', () => {-->
-<!--            const popup = card.querySelector('.project-popup');-->
-<!--            if (popup.style.display === 'block') {-->
-<!--                popup.style.display = 'none';-->
-<!--            } else {-->
-<!--                popup.style.display = 'block';-->
-<!--            }-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->
 </body>
 </html>

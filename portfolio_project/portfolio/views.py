@@ -1,5 +1,8 @@
 from django.shortcuts import render
-from .models import Project, Experience, UpdateLog, ContactInfo, get_social_links, list_buttons
+from .models import Project, Experience, UpdateLog, ContactInfo, get_social_links, list_buttons, get_cv
+from django.conf import settings
+import os
+from django.http import HttpResponse, HttpResponseNotFound
 
 # def project_list(request):
 #     projects = Project.objects.all()
@@ -7,12 +10,32 @@ from .models import Project, Experience, UpdateLog, ContactInfo, get_social_link
 
 def project_tree(request):
     projects = Project.objects.all()
+    buttons = list_buttons()
+    print("here my cv")
     categories = {
         "work": projects.filter(category="work"),
         "university": projects.filter(category="university"),
         "personal": projects.filter(category="personal"),
     }
-    return render(request, "portfolio/projects_tree.html", {"categories": categories, "projects": projects})
+    context = {"categories": categories,
+               "projects": projects,
+               "buttons": buttons,
+    }
+    return render(request, "portfolio/project_list.html", context)
+
+
+def download_cv(request, filename):
+
+    cv_folder = os.path.join(settings.MEDIA_ROOT, "my_cv")
+    file_path = os.path.join(cv_folder, filename)
+
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as f:
+            response = HttpResponse(f.read(), content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="{filename}"'
+            return response
+
+    return HttpResponseNotFound("File not found")
 
 def home(request):
     updates = UpdateLog.objects.order_by('-created_at')[:5]
@@ -29,7 +52,7 @@ def about(request):
     buttons = list_buttons()
     context = {
         'experiences': experiences,
-        'buttons': buttons
+        'buttons': buttons,
         # 'short_description': short_description
     }
     return render(request, 'portfolio/about.html', context)
@@ -49,10 +72,12 @@ def contacts(request):
     buttons = list_buttons()
 
     social_links = get_social_links()
+    cv = get_cv()
     context = {
         'social_links': social_links,
         'profile_photo_url': profile_photo_url,
-        'buttons': buttons
+        'buttons': buttons,
+        "cv": cv
         # 'short_description': short_description
     }
     return render(request, 'portfolio/contact.html', context)
