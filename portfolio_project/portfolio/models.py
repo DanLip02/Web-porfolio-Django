@@ -121,4 +121,23 @@ def list_buttons():
             })
     return buttons
 
+def get_cv():
+    folder = os.path.join(settings.BASE_DIR, 'media', 'my_cv')
+
+    if not os.path.exists(folder):
+        folder = os.path.join(settings.MEDIA_ROOT, 'my_cv')
+
+    if not os.path.exists(folder):
+        return None
+
+    for file in os.listdir(folder):
+        if file.lower().endswith('.pdf'):
+            return {
+                'file_url': f'/media/my_cv/{file}',
+                'file_name': file,
+                'display_name': 'My CV'
+            }
+
+    return None
+
 # Create your models here.
